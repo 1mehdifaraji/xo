@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/InterVariableFont.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope";
+  src: url("/fonts/Manrope-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --primary: #3ca5f1;
+  --success: #32b587;
+  --error: #f13c72;
+
+  --border-primary: #ededed;
+  --border-secondary: #b6b6b6;
+
+  --tracking-neg-2: -0.02em;
+  --tracking-neg-4: -0.04em;
+  --tracking-neg-5: -0.05em;
+
+  --text-primary: #2e2d2d;
+  --text-secondary: #9b9b9b;
+  --text-error: #f13c72;
+
+  --shadow-soft: 0px 4px 11px 0px #00000017;
+
+  --font-manrope: "Manrope", sans-serif;
+  --font-inter: "Inter", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#fafafa] text-primary tracking-neg-4 font-inter;
+  }
+}
+
+@layer utilities {
+  .layout {
+    @apply px-4 xl:px-0 max-w-[1440px] mx-auto pb-40;
+  }
+
+  .animate-bouncy {
+    animation: custom-bounce 0.8s infinite;
+  }
+
+  .bg-diagonal-stripes {
+    background-image: repeating-linear-gradient(
+      55deg,
+      #fafafa 0,
+      #fafafa 40px,
+      #f7f7f7 40px,
+      #f7f7f7 80px
+    );
+  }
+
+  .font-manrope {
+    font-family: var(--font-manrope);
+  }
+
+  .font-inter-display {
+    font-family: var(--font-inter);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .font-interTight {
+    font-family: var(--font-inter);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .button {
+    @apply cursor-pointer active:scale-95 transition-transform duration-300 from-[#41404C] min-w-27 bg-gradient-to-b to-[#333336] text-white shadow-soft rounded-lg py-2 px-2.5;
+  }
+
+  .button-secondary {
+    @apply w-5.5 h-5.5 cursor-pointer flex justify-center items-center rounded-[6px] border-[0.8px] border-[#DDDDDD];
+  }
+
+  .button-status {
+    @apply border-[#DDDDDD] flex justify-center items-center rounded-[6px] py-[0.5px] px-2.5 gap-1 border-[0.8px] text-sm font-light;
+  }
+
+  .card-title {
+    @apply text-[#3F3F3F] font-medium text-base;
+  }
+}
+
+@keyframes custom-bounce {
+  0%,
+  100% {
+    transform: translateY(-80%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
